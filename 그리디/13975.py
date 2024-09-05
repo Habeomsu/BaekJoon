@@ -12,3 +12,4 @@ for i in range(n):
         result +=(a+b)
         heapq.heappush(arr,a+b)
     print(result)
+
