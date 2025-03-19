@@ -15,29 +15,29 @@ for i in range(M):
     a,b,c= map(int,sys.stdin.readline().split())
     graph[a].append([c,b])
 
-# def dijkstra(start,now):
-#     que = []
-#     distance[start]=0
-#     heapq.heappush(que,[now,start])
-#     while que:
-#         now_dist,now_node = heapq.heappop(que)
-#         if distance[now_node]<now_dist:
-#             continue
-#         for next_dist,next_node in graph[now_node]:
-#             plus_dist = next_dist+now_dist
-#             if plus_dist<distance[next_node]:
-#                 distance[next_node] = plus_dist
-#                 heapq.heappush(que,[plus_dist,next_node])
-#
-# final_dist=[0]*(N+1)
-#
-# for i in range(1,N+1):
-#     distance=[INF]*(N+1)
-#     dijkstra(i,0)
-#     if i == X:
-#         for i in range(1,N+1):
-#             final_dist[i]+=distance[i]
-#     else:
-#         final_dist[i]+=distance[X]
-#
-# print(max(final_dist))
+def dijkstra(start,now):
+    que = []
+    distance[start]=0
+    heapq.heappush(que,[now,start])
+    while que:
+        now_dist,now_node = heapq.heappop(que)
+        if distance[now_node]<now_dist:
+            continue
+        for next_dist,next_node in graph[now_node]:
+            plus_dist = next_dist+now_dist
+            if plus_dist<distance[next_node]:
+                distance[next_node] = plus_dist
+                heapq.heappush(que,[plus_dist,next_node])
+
+final_dist=[0]*(N+1)
+
+for i in range(1,N+1):
+    distance=[INF]*(N+1)
+    dijkstra(i,0)
+    if i == X:
+        for i in range(1,N+1):
+            final_dist[i]+=distance[i]
+    else:
+        final_dist[i]+=distance[X]
+
+print(max(final_dist))
