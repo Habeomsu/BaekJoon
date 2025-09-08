@@ -27,19 +27,25 @@ def back(x,y,visit,sum,cnt):
         nx = x + dx[i]
         ny = y + dy[i]
         if nx >=0 and nx <N and ny >=0 and ny <M and visit[nx][ny] == 0:
+
+            if cnt == 2:
+                visit[nx][ny] = 1
+                back(x, y, visit, sum + board[nx][ny], cnt + 1)
+                visit[nx][ny] = 0
+
             visit[nx][ny] = 1
             back(nx,ny,visit,sum + board[nx][ny],cnt + 1)
             visit[nx][ny] = 0
 
     ## ㅗ 모양 만들기, 그 자리에서 한번더 back() 함수 실행
-    if cnt == 2:
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx >= 0 and nx < N and ny >= 0 and ny < M and visit[nx][ny] == 0:
-                visit[nx][ny] = 1
-                back(x,y,visit,sum + board[nx][ny],cnt + 1)
-                visit[nx][ny] = 0
+    # if cnt == 2:
+    #     for i in range(4):
+    #         nx = x + dx[i]
+    #         ny = y + dy[i]
+    #         if nx >= 0 and nx < N and ny >= 0 and ny < M and visit[nx][ny] == 0:
+    #             visit[nx][ny] = 1
+    #             back(x,y,visit,sum + board[nx][ny],cnt + 1)
+    #             visit[nx][ny] = 0
 
 for i in range(N):
     for j in range(M):
