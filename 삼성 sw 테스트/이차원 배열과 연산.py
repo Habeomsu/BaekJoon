@@ -24,7 +24,9 @@ def new_sort(arr):
         a,b = i
         new_arr.append(a)
         new_arr.append(b)
-    return new_arr
+        if len(new_arr) >= 100:
+            break
+    return new_arr[:100]
 
 def make_zero(arr):
     Max_len = 0
